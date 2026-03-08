@@ -215,11 +215,15 @@ ul {
 
 /* Hero Logo */
 .hero-logo-wrap {
-  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 48px;
+  padding-top: 16px;
 }
 
 .hero-logo {
-  width: 220px;
+  width: 260px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 24px rgba(30, 144, 255, 0.55)) drop-shadow(0 0 48px rgba(30, 144, 255, 0.25));
@@ -232,6 +236,12 @@ ul {
   }
   to {
     filter: drop-shadow(0 0 32px rgba(30, 144, 255, 0.8)) drop-shadow(0 0 64px rgba(30, 144, 255, 0.35));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    width: 200px;
   }
 }
 
