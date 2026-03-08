@@ -201,9 +201,47 @@ ul {
 }
 
 .navbar-logo img {
-  height: 40px;
+  height: 52px;
   width: auto;
   object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(30, 144, 255, 0.45));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-logo img:hover {
+  filter: drop-shadow(0 0 16px rgba(30, 144, 255, 0.75));
+  transform: scale(1.04);
+}
+
+/* Hero Logo */
+.hero-logo-wrap {
+  margin-bottom: 32px;
+}
+
+.hero-logo {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px rgba(30, 144, 255, 0.55)) drop-shadow(0 0 48px rgba(30, 144, 255, 0.25));
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  from {
+    filter: drop-shadow(0 0 18px rgba(30, 144, 255, 0.5)) drop-shadow(0 0 36px rgba(30, 144, 255, 0.2));
+  }
+  to {
+    filter: drop-shadow(0 0 32px rgba(30, 144, 255, 0.8)) drop-shadow(0 0 64px rgba(30, 144, 255, 0.35));
+  }
+}
+
+/* Footer Logo */
+.footer-brand img {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(30, 144, 255, 0.4));
+  margin-bottom: 12px;
 }
 
 .navbar-links {
