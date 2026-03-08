@@ -213,35 +213,48 @@ ul {
   transform: scale(1.04);
 }
 
-/* Hero Logo */
-.hero-logo-wrap {
+/* Hero Shield */
+.hero-shield-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 48px;
-  padding-top: 16px;
+  margin-bottom: 28px;
+  position: relative;
 }
 
-.hero-logo {
-  width: 260px;
+.hero-shield-wrap::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(30, 144, 255, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-shield-img {
+  width: 180px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 24px rgba(30, 144, 255, 0.55)) drop-shadow(0 0 48px rgba(30, 144, 255, 0.25));
-  animation: logoGlow 3s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 20px rgba(30, 144, 255, 0.7)) drop-shadow(0 0 48px rgba(30, 144, 255, 0.3));
+  animation: shieldPulse 3s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 1;
 }
 
-@keyframes logoGlow {
+@keyframes shieldPulse {
   from {
-    filter: drop-shadow(0 0 18px rgba(30, 144, 255, 0.5)) drop-shadow(0 0 36px rgba(30, 144, 255, 0.2));
+    filter: drop-shadow(0 0 16px rgba(30, 144, 255, 0.6)) drop-shadow(0 0 36px rgba(30, 144, 255, 0.25));
   }
   to {
-    filter: drop-shadow(0 0 32px rgba(30, 144, 255, 0.8)) drop-shadow(0 0 64px rgba(30, 144, 255, 0.35));
+    filter: drop-shadow(0 0 28px rgba(30, 144, 255, 0.95)) drop-shadow(0 0 60px rgba(30, 144, 255, 0.45));
   }
 }
 
 @media (max-width: 768px) {
-  .hero-logo {
-    width: 200px;
+  .hero-shield-img {
+    width: 140px;
   }
 }
 
@@ -454,6 +467,14 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+/* Hero Terminal Column */
+.hero-terminal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
 /* Terminal Window */
