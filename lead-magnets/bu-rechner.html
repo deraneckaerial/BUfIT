@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BU-Bedarfsrechner | BUfIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0D1B2A;
+      --navy-2: #152436;
+      --navy-3: #1c2f47;
+      --blue:   #1E90FF;
+      --blue-2: #4aa8ff;
+      --silver: #C0C0C0;
+      --muted:  #8896a7;
+      --border: #243448;
+      --success:#22c55e;
+      --radius: 12px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--silver);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--navy-2);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--blue); }
+
+    .header-badge {
+      font-size: 0.75rem;
+      background: rgba(30, 144, 255, 0.15);
+      color: var(--blue);
+      border: 1px solid rgba(30, 144, 255, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+
+    /* ── Progress Bar ── */
+    .progress-bar {
+      background: var(--navy-2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 2rem;
+    }
+
+    .progress-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step.active .step-num { background: var(--blue); color: #fff; }
+    .step.done .step-num   { background: var(--success); color: #fff; }
+    .step.idle .step-num   { background: var(--border); color: var(--muted); }
+
+    .step.active .step-label { color: #fff; }
+    .step.done .step-label   { color: var(--success); }
+    .step.idle .step-label   { color: var(--muted); }
+
+    .step-connector {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .step-connector.filled { background: var(--success); }
+
+    /* ── Main Layout ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Form Elements ── */
+    .field { margin-bottom: 1.5rem; }
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #d1dce8;
+      margin-bottom: 0.5rem;
+    }
+
+    label .hint {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238896a7' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    select:focus, input[type="number"]:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+    }
+
+    select option { background: var(--navy-3); }
+
+    /* Radio Buttons */
+    .radio-group {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .radio-option {
+      flex: 1;
+      position: relative;
+    }
+
+    .radio-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .radio-option input[type="radio"]:checked + .radio-label {
+      border-color: var(--blue);
+      background: rgba(30, 144, 255, 0.1);
+      color: var(--blue-2);
+    }
+
+    .radio-label:hover { border-color: rgba(30, 144, 255, 0.4); }
+
+    /* Slider */
+    .slider-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .slider-track { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--blue);
+      cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(30, 144, 255, 0.2);
+      transition: box-shadow 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 0 6px rgba(30, 144, 255, 0.25);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--blue);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 0 4px rgba(30, 144, 255, 0.2);
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .slider-number-input {
+      width: 100%;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      text-align: right;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .slider-number-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+    }
+
+    .input-suffix {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 0.25rem;
+    }
+
+    /* ── CTA Button ── */
+    .btn-primary {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary:hover { background: var(--blue-2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(30, 144, 255, 0.3); }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* ── Result Block ── */
+    #result-block {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    #result-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .result-hero {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, rgba(30, 144, 255, 0.08), rgba(30, 144, 255, 0.03));
+      border: 1px solid rgba(30, 144, 255, 0.2);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-value {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .result-value-unit {
+      font-size: 1.1rem;
+      color: var(--blue-2);
+      font-weight: 500;
+      margin-top: 0.3rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+
+    .result-item-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .result-item-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Details accordion */
+    .details-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .details-toggle:hover { color: var(--blue-2); }
+
+    .details-toggle .arrow {
+      transition: transform 0.2s;
+      font-size: 0.7rem;
+    }
+
+    .details-toggle.open .arrow { transform: rotate(90deg); }
+
+    .details-content {
+      display: none;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .details-content.open { display: block; }
+
+    .details-content code {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--blue-2);
+      font-size: 0.8rem;
+    }
+
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .details-row:last-child { border-bottom: none; }
+
+    /* Disclaimer */
+    .disclaimer {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      border-left: 3px solid var(--border);
+      line-height: 1.6;
+    }
+
+    /* Lead Capture Form */
+    .lead-form-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+
+    .lead-form-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-row input {
+      width: 100%;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-row input::placeholder { color: var(--muted); }
+    .form-row input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15); }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--blue);
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .checkbox-row label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .checkbox-row a { color: var(--blue); text-decoration: none; }
+    .checkbox-row a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--blue); text-decoration: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .result-value { font-size: 2.2rem; }
+      .slider-wrapper { grid-template-columns: 1fr; }
+      .radio-group { flex-direction: column; }
+      main { padding: 1.5rem 1rem 3rem; }
+      header { padding: 0.9rem 1rem; }
+      .card { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="logo">BU<span>f</span>IT</div>
+  <div class="header-badge">Kostenlos und unverbindlich</div>
+</header>
+
+<!-- ── Progress ── -->
+<div class="progress-bar">
+  <div class="progress-inner">
+    <div class="step active" id="step1">
+      <div class="step-num">1</div>
+      <div class="step-label">Deine Angaben</div>
+    </div>
+    <div class="step-connector" id="connector1"></div>
+    <div class="step active" id="step2">
+      <div class="step-num">2</div>
+      <div class="step-label">Dein Ergebnis</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main ── -->
+<main>
+  <h1 class="page-title">BU-Bedarfsrechner</h1>
+  <p class="page-subtitle">Finde heraus, wie viel Berufsunfähigkeitsrente du als IT-Professional brauchst und was sie ungefähr kostet.</p>
+
+  <!-- Formular -->
+  <form id="calc-form" onsubmit="return false;">
+
+    <!-- Block 1: Persoenliches -->
+    <div class="card">
+      <div class="card-title">Persoenliche Angaben</div>
+
+      <div class="field">
+        <label for="birthyear">Geburtsjahr</label>
+        <select id="birthyear" name="birthyear">
+          <option value="">-- Bitte waehlen --</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Beschaeftigungsstatus</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="emp" name="status" value="employed" checked />
+            <label class="radio-label" for="emp">Angestellter</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="free" name="status" value="freelancer" />
+            <label class="radio-label" for="free">Freelancer / Selbststaendig</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="job">IT-Berufsfeld</label>
+        <select id="job" name="job">
+          <option value="dev">Softwareentwickler / Programmierer</option>
+          <option value="devops">DevOps / Cloud Engineer</option>
+          <option value="data">Data Scientist / ML Engineer</option>
+          <option value="consultant">IT-Berater / Consultant</option>
+          <option value="ux">UX/UI Designer</option>
+          <option value="pm">IT-Projektmanager</option>
+          <option value="other">Sonstige IT-Taetigkeit</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Block 2: Einkommen & Kosten -->
+    <div class="card">
+      <div class="card-title">Einkommen und Absicherung</div>
+
+      <div class="field">
+        <label for="income-range">
+          Monatliches Nettoeinkommen
+          <span class="hint">Dein tatsaechlicher monatlicher Netto-Eingang</span>
+        </label>
+        <div class="slider-wrapper">
+          <div class="slider-track">
+            <input type="range" id="income-range" min="1500" max="15000" step="100" value="4500" oninput="syncSlider(this,'income-num')" />
+            <div class="slider-labels"><span>1.500</span><span>15.000 EUR</span></div>
+          </div>
+          <div>
+            <input type="text" class="slider-number-input" id="income-num" value="4.500" oninput="syncNum(this,'income-range',1500,15000,100)" />
+            <div class="input-suffix">EUR/Monat</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="costs-range">
+          Monatliche Fixkosten
+          <span class="hint">Miete/Hypothek, Kredite, Versicherungen, Lebenshaltung</span>
+        </label>
+        <div class="slider-wrapper">
+          <div class="slider-track">
+            <input type="range" id="costs-range" min="500" max="8000" step="100" value="2200" oninput="syncSlider(this,'costs-num')" />
+            <div class="slider-labels"><span>500</span><span>8.000 EUR</span></div>
+          </div>
+          <div>
+            <input type="text" class="slider-number-input" id="costs-num" value="2.200" oninput="syncNum(this,'costs-range',500,8000,100)" />
+            <div class="input-suffix">EUR/Monat</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="existing">Bestehende Absicherung im BU-Fall</label>
+        <select id="existing" name="existing">
+          <option value="none">Keine</option>
+          <option value="grv">Gesetzliche Erwerbsminderungsrente (gesetzlich versichert)</option>
+          <option value="beam">Beamtenversorgung (Beamter)</option>
+          <option value="unknown">Ich weiss es nicht</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="button" class="btn-primary" onclick="calculate()">Bedarf berechnen</button>
+  </form>
+
+  <!-- ── Result Block ── -->
+  <div id="result-block">
+
+    <div style="margin-top: 2.5rem; margin-bottom: 0.75rem;">
+      <div class="card-title" style="color: var(--muted); font-size: 0.72rem;">Dein Ergebnis</div>
+    </div>
+
+    <!-- Hero Value -->
+    <div class="result-hero">
+      <div class="result-label">Empfohlene monatliche BU-Rente</div>
+      <div class="result-value" id="r-rente">0</div>
+      <div class="result-value-unit">EUR / Monat</div>
+    </div>
+
+    <!-- Grid -->
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="result-item-label">Versicherungsdauer</div>
+        <div class="result-item-value" id="r-dauer">-- Jahre</div>
+      </div>
+      <div class="result-item">
+        <div class="result-item-label">Geschaetzte Pramie</div>
+        <div class="result-item-value" id="r-praemie">--</div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      * Schatzwert. Der tatsachliche Beitrag hangt von deinem Gesundheitszustand und der Versicherungsgesellschaft ab. Diese Berechnung ersetzt keine individuelle Beratung.
+    </div>
+
+    <!-- Berechnungsdetails -->
+    <button class="details-toggle" onclick="toggleDetails(this)">
+      <span class="arrow">&#9658;</span> Berechnungsdetails anzeigen
+    </button>
+
+    <div class="details-content" id="details-box">
+      <div id="details-rows"></div>
+    </div>
+
+    <!-- Lead Capture -->
+    <div class="card" style="margin-top: 1.5rem; border-color: rgba(30,144,255,0.25);">
+      <div class="lead-form-title">Ergebnis per E-Mail + kostenlose Ersteinschatzung</div>
+      <div class="lead-form-sub">Wir senden dir dein persoenliches BU-Ergebnis und melden uns fuer ein kurzes, unverbindliches Gesprach.</div>
+      <form action="#" method="POST">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Dein Vorname" required />
+          <input type="email" name="email" placeholder="deine@email.de" required />
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="privacy" name="privacy" required />
+          <label for="privacy">Ich stimme der <a href="#">Datenschutzerklarung</a> zu und bin damit einverstanden, kontaktiert zu werden.</label>
+        </div>
+        <button type="submit" class="btn-primary">Ergebnis senden und Beratungstermin buchen</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>BUfIT &mdash; Berufsunfahigkeitsversicherung fur IT-Professionals</p>
+  <p style="margin-top:0.35rem;"><a href="#">Impressum</a> &nbsp;|&nbsp; <a href="#">Datenschutz</a></p>
+</footer>
+
+<script>
+  // ── Populate birth year dropdown ──
+  const byEl = document.getElementById('birthyear');
+  for (let y = 2003; y >= 1970; y--) {
+    const o = document.createElement('option');
+    o.value = y; o.textContent = y;
+    byEl.appendChild(o);
+  }
+
+  // ── Sync slider <-> number input ──
+  function fmtNum(n) { return n.toLocaleString('de-DE'); }
+  function parseNum(s) { return parseInt(s.replace(/\./g, '').replace(',', '').trim()) || 0; }
+
+  function syncSlider(rangeEl, numId) {
+    document.getElementById(numId).value = fmtNum(parseInt(rangeEl.value));
+  }
+
+  function syncNum(numEl, rangeId, min, max, step) {
+    let v = parseNum(numEl.value);
+    v = Math.max(min, Math.min(max, Math.round(v / step) * step));
+    document.getElementById(rangeId).value = v;
+    numEl.value = fmtNum(v);
+  }
+
+  // ── Calculation ──
+  function roundUp50(n) { return Math.ceil(n / 50) * 50; }
+
+  function getAge(birthYear) {
+    return 2026 - birthYear;
+  }
+
+  function getAgeCoeff(age) {
+    if (age <= 29) return 0.0035;
+    if (age <= 34) return 0.0045;
+    if (age <= 39) return 0.0060;
+    if (age <= 44) return 0.0080;
+    return 0.0110;
+  }
+
+  function getJobFactor(job) {
+    if (['dev','devops','data'].includes(job)) return 1.0;
+    if (job === 'consultant') return 1.05;
+    if (['ux','pm'].includes(job)) return 1.0;
+    return 1.1; // other
+  }
+
+  function getJobLabel(job) {
+    const m = {
+      dev: 'Softwareentwickler / Programmierer',
+      devops: 'DevOps / Cloud Engineer',
+      data: 'Data Scientist / ML Engineer',
+      consultant: 'IT-Berater / Consultant',
+      ux: 'UX/UI Designer',
+      pm: 'IT-Projektmanager',
+      other: 'Sonstige IT-Taetigkeit'
+    };
+    return m[job] || job;
+  }
+
+  function getExistingDeduction(val) {
+    if (val === 'grv') return 800;
+    if (val === 'beam') return 0; // Beamter hat eigene Versorgung, separate Beratung noetig
+    return 0;
+  }
+
+  function calculate() {
+    // Read inputs
+    const birthYear = parseInt(byEl.value);
+    if (!birthYear) {
+      byEl.focus();
+      byEl.style.borderColor = '#ef4444';
+      setTimeout(() => byEl.style.borderColor = '', 2000);
+      return;
+    }
+    byEl.style.borderColor = '';
+
+    const status    = document.querySelector('input[name="status"]:checked').value;
+    const job       = document.getElementById('job').value;
+    const income    = parseNum(document.getElementById('income-num').value);
+    const costs     = parseNum(document.getElementById('costs-num').value);
+    const existing  = document.getElementById('existing').value;
+
+    const age         = getAge(birthYear);
+    const yearsTo67   = Math.max(0, 67 - age);
+    const deduction   = getExistingDeduction(existing);
+    const isFreelance = status === 'freelancer';
+
+    // BU-Rente Berechnung
+    const basis75     = Math.round(income * 0.775); // 77.5% als Mitte von 75-80%
+    const adjustedBU  = Math.max(basis75 - deduction, costs + 200);
+    const buRente     = roundUp50(adjustedBU);
+
+    // Praemien-Schaetzung
+    const coeff       = getAgeCoeff(age);
+    const jobFactor   = getJobFactor(job);
+    const freelancerM = isFreelance ? 1.1 : 1.0;
+    const basePraemie = buRente * coeff * jobFactor * freelancerM;
+    const pLow        = Math.round(basePraemie * 0.85);
+    const pHigh       = Math.round(basePraemie * 1.15);
+
+    // Render results
+    document.getElementById('r-rente').textContent  = buRente.toLocaleString('de-DE');
+    document.getElementById('r-dauer').textContent  = 'bis 67 (' + yearsTo67 + ' Jahre)';
+    document.getElementById('r-praemie').textContent = 'ca. ' + pLow + ' - ' + pHigh + ' EUR*';
+
+    // Details
+    let existingLabel = { none:'Keine', grv:'Gesetzl. EM-Rente (ca. 800 EUR Abzug)', beam:'Beamtenversorgung', unknown:'Unbekannt' }[existing];
+    const rows = [
+      ['Nettoeinkommen', income.toLocaleString('de-DE') + ' EUR'],
+      ['77,5% des Einkommens', basis75.toLocaleString('de-DE') + ' EUR'],
+      ['Abzug bestehende Absicherung', '-' + deduction + ' EUR'],
+      ['Sicherheitspuffer (Fixkosten + 200)', (costs + 200).toLocaleString('de-DE') + ' EUR'],
+      ['Empfohlene BU-Rente (gerundet)', buRente.toLocaleString('de-DE') + ' EUR'],
+      ['Alter (aktuell)', age + ' Jahre'],
+      ['Alters-Koeffizient', coeff],
+      ['Berufsgruppen-Faktor', getJobLabel(job) + ' x' + jobFactor],
+      ['Freelancer-Aufschlag', isFreelance ? '+10%' : 'keiner'],
+      ['Praemien-Range', 'ca. ' + pLow + ' - ' + pHigh + ' EUR/Monat']
+    ];
+
+    const detailsEl = document.getElementById('details-rows');
+    detailsEl.innerHTML = rows.map(([k, v]) =>
+      '<div class="details-row"><span>' + k + '</span><code>' + v + '</code></div>'
+    ).join('');
+
+    // Show result block
+    const rb = document.getElementById('result-block');
+    rb.classList.add('visible');
+    setTimeout(() => rb.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+
+    // Update progress
+    document.getElementById('step1').className = 'step done';
+    document.getElementById('connector1').className = 'step-connector filled';
+    document.getElementById('step2').className = 'step active';
+  }
+
+  function toggleDetails(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('details-box').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

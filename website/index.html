@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BUfIT: Berufsunfähigkeitsversicherung speziell für IT-Professionals. Drei Makler, die deinen Stack verstehen. Kostenlose, vollständig digitale Beratung." />
+  <meta name="theme-color" content="#0D1B2A" />
+  <!-- Pre-Launch: Indexierung deaktiviert. Vor Go-Live entfernen. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>BUfIT – Deine BU. Für deinen Stack.</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BUfIT – Deine BU. Für deinen Stack." />
+  <meta property="og:description" content="BU-Versicherung für IT-Professionals. Drei Makler, die IT verstehen. Kein Bullshit, keine Krawatte." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ======================================================
+       NAVIGATION
+  ====================================================== -->
+  <header class="navbar" role="banner">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="BUfIT Startseite">
+        <img src="../Logo.jpeg" alt="BUfIT Logo" />
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="navbar-links" aria-label="Hauptnavigation">
+        <a href="#wissen">Wissen</a>
+        <a href="rechner.html">Rechner</a>
+        <a href="#team">Team</a>
+        <a href="#referenzen">Referenzen</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="navbar-cta">
+        <a href="#beratung" class="btn btn-primary">Termin buchen</a>
+      </div>
+
+      <!-- Hamburger (Mobile) -->
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+      <a href="#wissen">Wissen</a>
+      <a href="rechner.html">Rechner</a>
+      <a href="#team">Team</a>
+      <a href="#referenzen">Referenzen</a>
+      <a href="#beratung" class="btn btn-primary">Termin buchen</a>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- ====================================================
+         1. HERO SECTION
+    ==================================================== -->
+    <section class="hero" aria-label="Einleitung">
+      <div class="container">
+        <div class="hero-inner">
+
+          <!-- Left: Text -->
+          <div class="hero-content">
+            <p class="hero-label">
+              // Berufsunfähigkeitsversicherung. Nur für IT.
+            </p>
+
+            <h1 class="hero-h1">
+              Deine BU.<br />
+              Für deinen <span class="highlight">Stack.</span>
+            </h1>
+
+            <p class="hero-subline">
+              Drei Makler, die IT verstehen.<br />
+              Kein Bullshit, keine Krawatte.
+            </p>
+
+            <div class="hero-ctas">
+              <a href="#beratung" class="btn btn-primary btn-lg">
+                Kostenlosen Termin buchen
+              </a>
+              <a href="rechner.html" class="btn btn-ghost btn-lg">
+                BU-Bedarf berechnen
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Terminal -->
+          <div class="hero-terminal" aria-hidden="true">
+            <div class="terminal">
+              <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">bufit-analyzer v2.4.1</span>
+              </div>
+              <div class="terminal-body" id="terminal-body">
+                <!-- Typewriter lines inserted by JS -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         2. TRUST BAR
+    ==================================================== -->
+    <section class="trust-bar" aria-label="Kennzahlen">
+      <div class="container">
+
+        <!-- Metrics -->
+        <div class="trust-metrics">
+          <div class="trust-metric fade-in">
+            <span class="trust-metric-icon" aria-hidden="true">👤</span>
+            <div class="trust-metric-value">200+</div>
+            <div class="trust-metric-label">IT-Professionals beraten</div>
+          </div>
+          <div class="trust-metric fade-in fade-in-delay-1">
+            <span class="trust-metric-icon" aria-hidden="true">🔍</span>
+            <div class="trust-metric-value">15+</div>
+            <div class="trust-metric-label">Versicherer verglichen</div>
+          </div>
+          <div class="trust-metric fade-in fade-in-delay-2">
+            <span class="trust-metric-icon" aria-hidden="true">⭐</span>
+            <div class="trust-metric-value">4.8/5</div>
+            <div class="trust-metric-label">Durchschnittliche Trustpilot-Bewertung</div>
+          </div>
+          <div class="trust-metric fade-in fade-in-delay-3">
+            <span class="trust-metric-icon" aria-hidden="true">💻</span>
+            <div class="trust-metric-value">100%</div>
+            <div class="trust-metric-label">Digital, kein Büro nötig</div>
+          </div>
+        </div>
+
+        <!-- Partner-Versicherer -->
+        <div class="trust-partners fade-in">
+          <p class="trust-partners-label">Unsere Partnernetzwerk-Versicherer:</p>
+          <div class="trust-badges">
+            <span class="trust-badge">Swiss Life</span>
+            <span class="trust-badge">Allianz</span>
+            <span class="trust-badge">Nürnberger</span>
+            <span class="trust-badge">Hannoversche</span>
+            <span class="trust-badge">LV 1871</span>
+            <span class="trust-badge">Canada Life</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         3. PROBLEM SECTION
+    ==================================================== -->
+    <section class="problem-section" id="wissen" aria-labelledby="problem-headline">
+      <div class="container">
+
+        <p class="section-label fade-in">// Das Problem</p>
+        <h2 class="section-headline fade-in" id="problem-headline">
+          Dein Makler weiß nicht, was ein "Staff Engineer" ist.
+          Dein BU-Vertrag wahrscheinlich auch nicht.
+        </h2>
+
+        <div class="problem-cards">
+
+          <!-- Card 1 -->
+          <div class="problem-card fade-in">
+            <div class="problem-card-icon" aria-hidden="true">
+              <!-- Bug/X Icon (SVG) -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+            </div>
+            <h3 class="problem-card-title">Falsche Berufsgruppe eingetragen</h3>
+            <p class="problem-card-text">
+              Viele ITler werden als "kaufmännisch" eingestuft. Das bedeutet höhere Prämien oder
+              schlechtere Leistungen im Ernstfall.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="problem-card fade-in fade-in-delay-1">
+            <div class="problem-card-icon" aria-hidden="true">
+              <!-- Warning Icon (SVG) -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <h3 class="problem-card-title">Freelancer? Welche Klauseln?</h3>
+            <p class="problem-card-text">
+              Abstrakte Verweisung, Einkommensnachweis, Gehaltsvergleich: Für Freelancer gelten
+              komplett andere Spielregeln.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="problem-card fade-in fade-in-delay-2">
+            <div class="problem-card-icon" aria-hidden="true">
+              <!-- Brain Icon (SVG) -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.88A2.5 2.5 0 0 1 9.5 2Z"/>
+                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.88A2.5 2.5 0 0 0 14.5 2Z"/>
+              </svg>
+            </div>
+            <h3 class="problem-card-title">Burnout wird systematisch unterschätzt</h3>
+            <p class="problem-card-text">
+              Psychische Erkrankungen sind die häufigste BU-Ursache in der IT.
+              Einige Gesellschaften schließen sie versteckt aus.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="problem-cta fade-in">
+          <a href="rechner.html">
+            Wie hoch ist mein Risiko? Jetzt berechnen
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         4. SOLUTION SECTION
+    ==================================================== -->
+    <section class="solution-section" aria-labelledby="solution-headline">
+      <div class="container">
+
+        <p class="section-label fade-in" style="text-align:center;">// Die Lösung</p>
+        <h2 class="section-headline fade-in" id="solution-headline" style="text-align:center;margin:0 auto 80px;">
+          Wie BUfIT anders arbeitet
+        </h2>
+
+        <div class="solution-blocks">
+
+          <!-- Block 1: IT-Spezialisierung -->
+          <div class="solution-block fade-in">
+            <div class="solution-block-content">
+              <span class="solution-block-number">01</span>
+              <h3 class="solution-block-title">IT-Spezialisierung, keine Worthülse</h3>
+              <p class="solution-block-text">
+                Wir kennen den Unterschied zwischen einem Junior Developer, einem Staff Engineer
+                und einem selbstständigen DevOps-Consultant. Diese Unterschiede entscheiden
+                darüber, welcher Vertrag für dich wirklich sinnvoll ist, welche Klauseln
+                relevant werden und was im Leistungsfall zählt.
+              </p>
+            </div>
+            <div class="solution-block-deco">
+<pre class="code-block"><span class="code-comment">// Berufsgruppenbewertung</span>
+<span class="code-keyword">const</span> <span class="code-accent">profil</span> = {
+  rolle: <span class="code-string">"Staff Engineer"</span>,
+  typ: <span class="code-string">"festangestellt"</span>,
+  risiko: <span class="code-string">"vorwiegend büro"</span>,
+  bgu: <span class="code-number">1</span>, <span class="code-comment">// Berufsgruppe 1</span>
+}
+
+<span class="code-keyword">return</span> <span class="code-accent">optimizeContract</span>(profil);
+<span class="code-comment">// → Swiss Life BU Premium</span>
+<span class="code-comment">// → 4.500 EUR/Monat</span>
+<span class="code-comment">// → Keine abstrakte Verweisung</span></pre>
+            </div>
+          </div>
+
+          <!-- Block 2: Marktvergleich (reversed) -->
+          <div class="solution-block reverse fade-in">
+            <div class="solution-block-content">
+              <span class="solution-block-number">02</span>
+              <h3 class="solution-block-title">Marktvergleich, den du selbst prüfen kannst</h3>
+              <p class="solution-block-text">
+                Du bekommst von uns kein PDF mit einer Empfehlung, sondern eine strukturierte
+                Gegenüberstellung mit nachvollziehbarer Begründung. Warum Gesellschaft A
+                besser ist als Gesellschaft B, was die Unterschiede in den Bedingungen bedeuten
+                und wo die Fallstricke liegen.
+              </p>
+            </div>
+            <div class="solution-block-deco">
+<pre class="code-block"><span class="code-comment">// Vergleich: 3 Angebote</span>
+
+<span class="code-accent">Angebot A</span>: Swiss Life
+  Prämie:  <span class="code-number">68</span> EUR/Monat
+  Rente:   <span class="code-number">4.500</span> EUR ✓
+  Psyche:  <span class="code-accent">eingeschlossen</span> ✓
+
+<span class="code-accent">Angebot B</span>: Nürnberger
+  Prämie:  <span class="code-number">61</span> EUR/Monat
+  Rente:   <span class="code-number">4.500</span> EUR ✓
+  Psyche:  <span class="code-accent">eingeschlossen</span> ✓
+
+<span class="code-comment">// Empfehlung: Angebot A</span>
+<span class="code-comment">// Grund: Klausel §4 Abs.2</span></pre>
+            </div>
+          </div>
+
+          <!-- Block 3: Digital -->
+          <div class="solution-block fade-in">
+            <div class="solution-block-content">
+              <span class="solution-block-number">03</span>
+              <h3 class="solution-block-title">Vollständig digital, ohne Warteschleife</h3>
+              <p class="solution-block-text">
+                Kein Außendiensttermin, keine Papierformulare und kein Telefonieren mit
+                einer Hotline. Terminbuchung per Calendly, Gespräch per Videokonferenz,
+                Antrag per E-Mail, Police per Download. Vom Erstgespräch zum Vertragsabschluss
+                in der Regel unter zwei Wochen.
+              </p>
+            </div>
+            <div class="solution-block-deco">
+<pre class="code-block"><span class="code-comment">// Beratungs-Pipeline</span>
+
+<span class="code-accent">step_1</span>: calendly.book()
+  <span class="code-comment">// 15 Min. Erstgespräch</span>
+  status: <span class="code-string">"done"</span> ✓
+
+<span class="code-accent">step_2</span>: market.analyze()
+  <span class="code-comment">// 48h Marktvergleich</span>
+  status: <span class="code-string">"done"</span> ✓
+
+<span class="code-accent">step_3</span>: contract.sign()
+  <span class="code-comment">// Digital, keine Papiere</span>
+  status: <span class="code-string">"pending..."</span> ⏳</pre>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         5. PROZESS SECTION
+    ==================================================== -->
+    <section class="process-section" id="prozess" aria-labelledby="process-headline">
+      <div class="container">
+
+        <p class="section-label fade-in" style="text-align:center;">// Wie es läuft</p>
+        <h2 class="section-headline fade-in" id="process-headline" style="text-align:center;margin:0 auto 72px;">
+          Von der Idee zum Vertrag in 3 Schritten
+        </h2>
+
+        <div class="process-timeline">
+
+          <div class="process-step fade-in">
+            <div class="process-step-number" aria-hidden="true">1</div>
+            <div>
+              <p class="process-step-label">ANALYSE (15 Min.)</p>
+              <h3 class="process-step-title">Kennenlernen</h3>
+              <p class="process-step-text">
+                Erzähl uns von deinem Job, deinem Einkommen und deinen Wünschen.
+                Wir stellen die richtigen Fragen und hören zu.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step fade-in fade-in-delay-1">
+            <div class="process-step-number" aria-hidden="true">2</div>
+            <div>
+              <p class="process-step-label">VERGLEICH (48h)</p>
+              <h3 class="process-step-title">Marktanalyse</h3>
+              <p class="process-step-text">
+                Wir analysieren den Markt und schicken dir eine nachvollziehbare Empfehlung
+                mit klarer Begründung und Gegenüberstellung.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step fade-in fade-in-delay-2">
+            <div class="process-step-number" aria-hidden="true">3</div>
+            <div>
+              <p class="process-step-label">ABSCHLUSS (digital)</p>
+              <h3 class="process-step-title">Vertragsabschluss</h3>
+              <p class="process-step-text">
+                Antrag online, Unterschrift digital, Police per E-Mail.
+                Kein Papierkram, keine Laufwege.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="process-cta fade-in">
+          <a href="#beratung" class="btn btn-primary btn-lg">Jetzt Termin buchen</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         6. TEAM SECTION
+    ==================================================== -->
+    <section class="team-section" id="team" aria-labelledby="team-headline">
+      <div class="container">
+
+        <p class="section-label fade-in" style="text-align:center;">// Wer berät dich</p>
+        <h2 class="section-headline fade-in" id="team-headline" style="text-align:center;">
+          Drei Makler. Ein Thema.
+        </h2>
+        <p class="team-subtext fade-in">
+          Keine Außendienstkollegen. Du redest immer direkt mit einem Gründer.
+        </p>
+
+        <div class="team-cards">
+
+          <!-- Till Deraneck -->
+          <div class="team-card fade-in">
+            <div class="team-avatar" aria-hidden="true">TD</div>
+            <h3 class="team-name">Till Deraneck</h3>
+            <p class="team-role">BU-Spezialist, §34d</p>
+            <p class="team-quote">
+              "Ich erklär dir deine Police, bis du wirklich verstehst was drin steht."
+            </p>
+            <a href="https://www.linkedin.com/in/till-deraneck/" class="team-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Till Deraneck auf LinkedIn">
+              <!-- LinkedIn Icon SVG -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1E90FF" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+
+          <!-- Tim Ruser -->
+          <div class="team-card fade-in fade-in-delay-1">
+            <div class="team-avatar" aria-hidden="true">TR</div>
+            <h3 class="team-name">Tim Ruser</h3>
+            <p class="team-role">BU-Spezialist, §34d</p>
+            <p class="team-quote">
+              "Deine Situation als Freelancer oder Angestellter: Ich kenne beide Seiten."
+            </p>
+            <a href="#" class="team-linkedin" aria-label="Tim Ruser auf LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1E90FF" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+
+          <!-- Finn Diestel -->
+          <div class="team-card fade-in fade-in-delay-2">
+            <div class="team-avatar" aria-hidden="true">FD</div>
+            <h3 class="team-name">Finn Diestel</h3>
+            <p class="team-role">BU-Spezialist, §34d</p>
+            <p class="team-quote">
+              "Klare Empfehlungen statt Versicherungskauderwelsch."
+            </p>
+            <a href="#" class="team-linkedin" aria-label="Finn Diestel auf LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1E90FF" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         7. TESTIMONIALS SECTION
+    ==================================================== -->
+    <section class="testimonials-section" id="referenzen" aria-labelledby="testimonials-headline">
+      <div class="container">
+
+        <p class="section-label fade-in" style="text-align:center;">// Kundenstimmen</p>
+        <h2 class="section-headline fade-in" id="testimonials-headline" style="text-align:center;margin:0 auto 64px;">
+          Was IT-Professionals sagen
+        </h2>
+
+        <div class="testimonial-cards">
+
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <p class="testimonial-quote">
+              "Endlich ein Makler, der weiß was Senior Engineer bedeutet.
+              Hab meine Police nach dem Gespräch komplett verstanden."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-initials" aria-hidden="true">MK</div>
+              <div>
+                <p class="testimonial-name">M. K.</p>
+                <p class="testimonial-role">Senior Software Engineer, Hamburg</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card fade-in fade-in-delay-1">
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <p class="testimonial-quote">
+              "Als Freelancer hatte ich immer Probleme mit der BU-Beratung.
+              Till hat sofort die richtigen Fragen gestellt."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-initials" aria-hidden="true">SB</div>
+              <div>
+                <p class="testimonial-name">S. B.</p>
+                <p class="testimonial-role">IT-Freelancer, Berlin</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card fade-in fade-in-delay-2">
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <p class="testimonial-quote">
+              "Innerhalb von 48h hatte ich drei konkrete Angebote mit Vergleich und
+              klarer Empfehlung. Keine andere Erfahrung war so transparent."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-initials" aria-hidden="true">LW</div>
+              <div>
+                <p class="testimonial-name">L. W.</p>
+                <p class="testimonial-role">DevOps Engineer, München</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         8. CTA SECTION
+    ==================================================== -->
+    <section class="cta-section" id="beratung" aria-labelledby="cta-headline">
+      <div class="container">
+        <div class="cta-section-inner">
+
+          <p class="section-label fade-in" style="color:rgba(255,255,255,0.7);text-align:center;">// Jetzt starten</p>
+          <h2 class="section-headline fade-in" id="cta-headline" style="color:#fff;text-align:center;">
+            Weißt du, wie hoch deine BU-Rente sein sollte?
+          </h2>
+          <p class="cta-section-subline fade-in">
+            In 3 Minuten zum personalisierten Ergebnis.
+          </p>
+
+          <div class="cta-section-actions fade-in">
+            <a href="rechner.html" class="btn btn-white btn-lg">
+              BU-Bedarf jetzt berechnen
+            </a>
+            <a href="#beratung" class="cta-section-secondary">
+              Oder direkt einen Beratungstermin buchen
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         9. FAQ SECTION
+    ==================================================== -->
+    <section class="faq-section" id="faq" aria-labelledby="faq-headline">
+      <div class="container">
+
+        <p class="section-label fade-in" style="text-align:center;">// FAQ</p>
+        <h2 class="section-headline fade-in" id="faq-headline" style="text-align:center;margin:0 auto 64px;">
+          Häufige Fragen
+        </h2>
+
+        <div class="faq-list" role="list">
+
+          <!-- FAQ 1 -->
+          <div class="faq-item fade-in" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-answer-1"
+            >
+              Was kostet die Beratung bei BUfIT?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" role="region">
+              <p class="faq-answer-inner">
+                Nichts. Wir werden vom Versicherer vergütet wenn ein Vertrag zustande kommt.
+                Keine versteckten Kosten, kein Honorar.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item fade-in" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-answer-2"
+            >
+              Ich bin Freelancer ohne festes Einkommen. Kann ich trotzdem eine BU abschließen?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" role="region">
+              <p class="faq-answer-inner">
+                Ja. Wir erklären dir genau welche Nachweise du brauchst und welche Gesellschaften
+                Selbstständige fair behandeln.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item fade-in" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-answer-3"
+            >
+              Ich hatte Rückenprobleme. Werde ich abgelehnt?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" role="region">
+              <p class="faq-answer-inner">
+                Nicht zwangsläufig. Wir klären anonym vorab bei Gesellschaften an, ob und zu
+                welchen Konditionen du versichert werden kannst.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item fade-in" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-answer-4"
+            >
+              Wie läuft die Beratung ab?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" role="region">
+              <p class="faq-answer-inner">
+                Vollständig digital. Terminbuchung per Calendly, Gespräch per Videokonferenz,
+                Antrag per E-Mail.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item fade-in" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-answer-5"
+            >
+              Wie lange dauert es bis zum Abschluss?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" role="region">
+              <p class="faq-answer-inner">
+                Im Normalfall 1 bis 2 Wochen: Erstgespräch, Angebotsvergleich, Antrag und Police.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item fade-in" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-answer-6"
+            >
+              Was passiert wenn ich im Leistungsfall bin?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" role="region">
+              <p class="faq-answer-inner">
+                Wir begleiten dich aktiv beim Leistungsantrag. Das ist Teil unserer
+                Beratungsleistung, nicht nur der Abschluss.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <img src="../Logo.jpeg" alt="BUfIT Logo" />
+          <p class="footer-tagline">Deine BU. Für deinen Stack.</p>
+          <div class="footer-social" aria-label="Soziale Medien">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/till-deraneck/" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="BUfIT auf LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="footer-social-link" aria-label="BUfIT auf Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <!-- TikTok -->
+            <a href="#" class="footer-social-link" aria-label="BUfIT auf TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.19a8.19 8.19 0 0 0 4.79 1.53V7.27a4.85 4.85 0 0 1-1.02-.58z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links" role="list">
+            <li><a href="#wissen">Wissen</a></li>
+            <li><a href="rechner.html">BU-Rechner</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#referenzen">Referenzen</a></li>
+            <li><a href="#beratung">Termin buchen</a></li>
+          </ul>
+        </div>
+
+        <!-- Wissen -->
+        <div class="footer-col">
+          <p class="footer-col-title">Wissen</p>
+          <ul class="footer-links" role="list">
+            <li><a href="#wissen">Was ist BU?</a></li>
+            <li><a href="#wissen">BU für Freelancer</a></li>
+            <li><a href="#wissen">Burnout und BU</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Rechtliches -->
+        <div class="footer-col">
+          <p class="footer-col-title">Rechtliches</p>
+          <ul class="footer-links" role="list">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+      <div class="container">
+        <p>
+          &copy; 2025 BUfIT GbR
+          &nbsp;&middot;&nbsp;
+          Zugelassene Versicherungsmakler gem. §34d GewO
+          &nbsp;&middot;&nbsp;
+          IHK-Registrierung: [Nummer]
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# BUfIT – Pre-Launch. Indexierung deaktiviert bis Go-Live.
+# Diese Datei vor Launch entfernen oder durch eine offene Version ersetzen.
