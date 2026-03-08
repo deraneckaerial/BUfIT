@@ -295,7 +295,7 @@ Rechts: Terminal-Animation:
 
 **Trust Bar**
 ```
-[Icon] 200+ IT-Professionals beraten  |  [Icon] 15+ Versicherer verglichen  |
+[Icon] 600+ betreute Mandanten  |  [Icon] 15+ Versicherer verglichen  |
 [Icon] Ø 4.8/5 Trustpilot  |  [Icon] 100% digital
 
 [Logos der Versicherungsgesellschaften als Partnernetzwerk]
