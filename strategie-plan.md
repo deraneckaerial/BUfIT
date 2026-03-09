@@ -1,6 +1,6 @@
 # BUfIT Strategie-Plan
 **Berufsunfähigkeitsversicherung. Nur für IT.**
-Gegründet von Till Deraneck, Tim Ruser, Finn Diestel
+Gegründet von Tick, Trick, Track
 
 ---
 
@@ -62,7 +62,7 @@ Gegründet von Till Deraneck, Tim Ruser, Finn Diestel
 1. "5 BU-Klauseln, die IT-Freelancer nicht haben, aber dringend brauchen" (Karussell, 8 Slides)
 2. "Ich habe 50 BU-Anträge für Softwareentwickler analysiert: Das sind die 3 häufigsten Ablehnungsgründe" (Longform, datengetrieben)
 3. "Remote Work und BU: Was passiert wenn dein Homeoffice zur Büropflicht wird?" (Textpost mit Diskussionsfrage)
-4. "Unser Gründer Till hat seinen eigenen BU-Antrag ausgefüllt und war selbst überrascht" (persönliche Story)
+4. "Unser Gründer Tick hat seinen eigenen BU-Antrag ausgefüllt und war selbst überrascht" (persönliche Story)
 5. "Der Unterschied zwischen 'Programmierer' und 'kaufmännischer Angestellter' kostet in der BU bis zu 40% Prämie" (Karussell)
 6. "Warum 80% der ITler ihre BU kündigen würden, wenn sie wüssten was drin steht" (provokante These)
 7. "Burnout ist die Nummer-1-BU-Ursache. Diese Versicherungen schließen psychische Erkrankungen aus." (Daten-Post)
@@ -358,13 +358,13 @@ Antrag online, Unterschrift digital, Police per E-Mail.
 **Team Section**
 ```
 [3 Karten:]
-[Foto] Till Deraneck | BU-Spezialist, §34d
+[Foto] Tick | BU-Spezialist, §34d
 "Ich erklär dir deine Police, bis du wirklich verstehst was drin steht."
 
-[Foto] Tim Ruser | BU-Spezialist, §34d
+[Foto] Trick | BU-Spezialist, §34d
 [...individueller Tagline]
 
-[Foto] Finn Diestel | BU-Spezialist, §34d
+[Foto] Track | BU-Spezialist, §34d
 [...individueller Tagline]
 
 Subtext: "Keine Außendienstkollegen, keine Back-Office-Struktur. Du redest immer direkt mit einem Gründer."

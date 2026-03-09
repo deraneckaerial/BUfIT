@@ -1,11 +1,11 @@
 # BUfIT LinkedIn Posts
 
-10 fertige Posts, verteilt auf die Gründer Till Deraneck, Tim Ruser und Finn Diestel.
+10 fertige Posts, verteilt auf die Gründer Tick, Trick und Track.
 Alle Posts: Duzen, keine em-Dashes, direkte Ansprache, kein Corporate-Speak.
 
 ---
 
-## Post 1 | Till Deraneck | Gründungspost
+## Post 1 | Tick | Gründungspost
 
 **Warum wir BUfIT gestartet haben**
 
@@ -15,7 +15,7 @@ Ich habe mal einen Blick in die BU-Police eines befreundeten Senior Developers g
 
 Das war nicht sein Fehler. Das war das Ergebnis einer Branche, die IT-Professionals seit Jahrzehnten mit Standardpolicen abspeist, die für Buchhaltung oder Einzelhandel gemacht wurden, nicht für Entwickler, die täglich an Bildschirmen arbeiten, Deadlines managen und mentale Höchstleistung bringen.
 
-Ich bin selbst §34d-Versicherungsmakler. Tim Ruser kennt die technische Seite der Branche von innen. Finn Diestel hat die Datenlage analysiert, die zeigt, wie viele ITler ohne ausreichenden Schutz dastehen. Wir drei haben uns zusammengetan und BUfIT gegründet: eine Beratung, die ausschließlich Berufsunfähigkeitsversicherungen für IT-Professionals anbietet.
+Ich bin selbst §34d-Versicherungsmakler. Trick kennt die technische Seite der Branche von innen. Track hat die Datenlage analysiert, die zeigt, wie viele ITler ohne ausreichenden Schutz dastehen. Wir drei haben uns zusammengetan und BUfIT gegründet: eine Beratung, die ausschließlich Berufsunfähigkeitsversicherungen für IT-Professionals anbietet.
 
 Kein Bauchladen. Keine Provisionsoptimierung. Keine Standardprodukte für Nicht-Standard-Berufe.
 
@@ -31,7 +31,7 @@ Wenn dich das Thema interessiert: Folg BUfIT und schreib mir gerne direkt. Die e
 
 ---
 
-## Post 2 | Tim Ruser | Fachpost (Liste)
+## Post 2 | Trick | Fachpost (Liste)
 
 **5 BU-Klauseln, die IT-Freelancer nicht haben, aber dringend brauchen**
 
@@ -62,7 +62,7 @@ Hast du deine Police schon auf diese Punkte geprüft? Wenn nicht, schreib mir. I
 
 ---
 
-## Post 3 | Finn Diestel | Daten-Post
+## Post 3 | Track | Daten-Post
 
 **Burnout ist die Nummer-1-BU-Ursache in der IT. Diese Gesellschaften schließen sie aus.**
 
@@ -92,7 +92,7 @@ Schreib uns, wenn du wissen willst, wie deine aktuelle Police bei diesem Kriteri
 
 ---
 
-## Post 4 | Till Deraneck | Persönliche Story
+## Post 4 | Tick | Persönliche Story
 
 **Ich habe meinen eigenen BU-Antrag ausgefüllt. Und war selbst überrascht.**
 
@@ -118,7 +118,7 @@ Was war dein überraschendster Moment beim Thema Versicherung? Schreib es in die
 
 ---
 
-## Post 5 | Tim Ruser | Provokante These
+## Post 5 | Trick | Provokante These
 
 **80% der ITler sind in ihrer BU falsch eingestuft. Hier ist der Beweis.**
 
@@ -146,7 +146,7 @@ Wir helfen dir bei der Einordnung und falls nötig bei der Korrektur. Schreib mi
 
 ---
 
-## Post 6 | Finn Diestel | Erklärpost
+## Post 6 | Track | Erklärpost
 
 **Der Unterschied zwischen "Programmierer" und "kaufmännischer Angestellter" kostet dich bis zu 40% Prämie.**
 
@@ -172,7 +172,7 @@ Die erste Analyse kostet dich nichts. Nur ein bisschen Zeit.
 
 ---
 
-## Post 7 | Till Deraneck | Diskussionspost
+## Post 7 | Tick | Diskussionspost
 
 **Remote Work und BU: Was passiert, wenn dein Homeoffice zur Büropflicht wird?**
 
@@ -196,7 +196,7 @@ Schreibt eure Erfahrungen in die Kommentare. Ich lese jede Antwort.
 
 ---
 
-## Post 8 | Tim Ruser | Freelancer-fokussiert
+## Post 8 | Trick | Freelancer-fokussiert
 
 **Self-employed, GbR, UG: Welche BU-Variante macht für dich Sinn?**
 
@@ -223,7 +223,7 @@ Welches Modell fährst du? Und bist du dir sicher, dass deine BU dazu passt? Sch
 
 ---
 
-## Post 9 | Finn Diestel | Mythen-Busting
+## Post 9 | Track | Mythen-Busting
 
 **BU-Mythos: "Ich bin jung und gesund, ich brauche das nicht."**
 
@@ -247,7 +247,7 @@ Wann hast du das letzte Mal deine Absicherung gecheckt?
 
 ---
 
-## Post 10 | Till Deraneck | Transparenz-Post
+## Post 10 | Tick | Transparenz-Post
 
 **Wir haben 3 BU-Angebote für einen Senior Developer verglichen. Hier sind die Zahlen.**
 
